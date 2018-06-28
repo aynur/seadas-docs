@@ -6,26 +6,11 @@
 
 Troubleshootings:
 
-1. Update plugins failed. I found the following explanation on the web: 
+1. Update plugins failed. 
+WARNING [org.netbeans.modules.autoupdate.services.InstallManager]: There is no write permission to write in target cluster seadas for SeaDAS Toolbox Kit Module[gov.nasa.gsfc.seadas.seadas.kit/8.0.0.0]
+INFO [org.netbeans.modules.autoupdate.services.InstallManager]: Declared target cluster seadas in SeaDAS Toolbox Kit Module[gov.nasa.gsfc.seadas.seadas.kit/8.0.0.0] wasn't found or was read only. Will be used .../snap/snap-desktop/snap-application/target/snap
 
+Possible explanation:
 ----------------------------------------------------------------------------------------------
-Running on Ubuntu, I have netbeans installed by root, and run it as an ordinary user. Due to directory permissions I cannot install plugins to the default location and have to set the plugin install location to "Force install into user directory". This is fine. However, on upgrade of netbeans (eg from 8.1 to 8.2) this setting on the old version of netbeans is not honoured when importing plugins to the new version, meaning (for me) the plugin imports fail. For most plugins it looks like the plugin tries the default directory and then installs to the user directory. However for some (I guess it is due to an incorrectly written plugin installer) this causes an exception, and plugin import stops. This happens for me with the JIRA plugin:
-
-WARNING [org.netbeans.modules.autoupdate.services.InstallManager]: There is no write permission to write in target cluster enterprise for Amazon Elastic Beanstalk[org.netbeans.modules.cloud.amazon/1.15.1]
-WARNING [org.netbeans.modules.autoupdate.services.InstallManager]: There is no write permission to write in target cluster extra for Amazon Elastic Beanstalk[org.netbeans.modules.cloud.amazon/1.15.1]
-INFO [org.netbeans.modules.autoupdate.services.InstallManager]: Declared target cluster enterprise in Amazon Elastic Beanstalk[org.netbeans.modules.cloud.amazon/1.15.1] wasn't found or was read only. Will be used /home/rslater/.netbeans/8.2
-
-<more like this> 
-
-WARNING [org.netbeans.modules.autoupdate.services.InstallManager]: There is no write permission to write in target cluster extra for JIRA[org.netbeans.modules.jira/1.58]
-INFO [org.netbeans.modules.autoupdate.ui.wizards.InstallStep]: org.netbeans.modules.jira
-org.netbeans.api.autoupdate.OperationException[WRITE_PERMISSION]: org.netbeans.modules.jira
-        at org.netbeans.modules.autoupdate.services.InstallManager.checkTargetCluster(InstallManager.java:177)
-                at org.netbeans.modules.autoupdate.services.InstallManager.findTargetDirectory(InstallManager.java:135)
-                        at org.netbeans.modules.autoupdate.services.InstallSupportImpl$1.call(InstallSupportImpl.java:158)
-                                at org.netbeans.modules.autoupdate.services.InstallSupportImpl$1.call(InstallSupportImpl.java:144)
-                                        at java.util.concurrent.FutureTask.run(FutureTask.java:266)
-                                                at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
-                                                        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
-                                                        [catch] at java.lang.Thread.run(Thread.java:745)
----------------------------------------------------------------------------------------------------
+Running on Ubuntu, I have netbeans installed by root, and run it as an ordinary user. Due to directory permissions I cannot install plugins to the default location and have to set the plugin install location to "Force install into user directory". This is fine. However, on upgrade of netbeans (eg from 8.1 to 8.2) this setting on the old version of netbeans is not honoured when importing plugins to the new version, meaning (for me) the plugin imports fail. For most plugins it looks like the plugin tries the default directory and then installs to the user directory. However for some (I guess it is due to an incorrectly written plugin installer) this causes an exception, and plugin import stops. 
+-------------------------------------------------------------------------------------------------------------
